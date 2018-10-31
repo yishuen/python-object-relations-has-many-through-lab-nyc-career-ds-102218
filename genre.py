@@ -6,8 +6,15 @@ class Genre:
     def __init__(self, name):
         self._name = name
 
+    @property
+    def name(self):
+        return self._name
+
     def songs(self):
-        pass
+        matches = list(filter(lambda s: s._genre == self, Song._all))
+        return matches
 
     def artists(self):
-        pass
+        matches = list(filter(lambda s: s._genre == self, Song._all))
+        artist_objs = list(map(lambda s: s._artist, matches))
+        return artist_objs

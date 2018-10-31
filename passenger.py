@@ -1,4 +1,4 @@
-# import Trip class here
+from trip import Trip
 
 class Passenger:
 
@@ -7,10 +7,14 @@ class Passenger:
         self._age = age
 
     def trips(self):
-        pass
+        matches = list(filter(lambda t: t._passenger == self, Trip._all))
+        return matches
 
     def drivers(self):
-        pass
+        matches = list(filter(lambda t: t._passenger == self, Trip._all))
+        driver_objs = list(map(lambda t: t._driver, matches))
+        return driver_objs
 
     def trip_count(self):
-        pass
+        matches = list(filter(lambda t: t._passenger == self, Trip._all))
+        return len(matches)
